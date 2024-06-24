@@ -23,9 +23,9 @@ const remove = async (id) => {
     return rows[0]
 }
 
-const update = async(id, nombre, balance) => {
-    const query ={
-        text: `UPDATE USUARIOS SET nombre = $1, balance = $2 WHERE id = $3 RETURNING*`,
+const update = async(id, { nombre, balance }) => {
+    const query = {
+        text: `UPDATE usuarios SET nombre = $1, balance = $2 WHERE id = $3 RETURNING*`,
         values: [nombre, balance, id]
     }
     const {rows} = await pool.query(query)

@@ -16,7 +16,7 @@ export const createUser = async(req, res)=> {
         if (!nombre || balance === undefined) {
             return res.status(400).json({ ok: false, message: "Nombre y balance son requeridos" });
         }
-        const newUser = await usuarioModel.create({ nombre, balance });
+        const newUser = await usuarioModel.create( nombre, balance );
         res.status(201).json({ newUser });
     } catch (error) {
         console.error(error);
